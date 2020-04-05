@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import Counter from "./Counter";
 import NoteApp from "./NoteApp";
+// import ShowCursorPostion from "./ShowCursorPosition";
 // import Dropdown from "react-dropdown";
 // import ResizeImage from "react-resize-image";
 // import AspectRatio from "react-aspect-ratio";
@@ -39,6 +40,7 @@ export default function App() {
   return (
     <div className="App">
       <Counter counter={10} />
+      {/* <ShowCursorPostion /> */}
       <NoteApp />
     </div>
   );
