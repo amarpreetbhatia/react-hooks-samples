@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import NodeList from "./NodeList";
 import AddNote from "./AddNote";
 import { notesReducer } from "./NoteReducer";
+import NotestContext from "./context/reacts-context";
 
 const NoteApp = () => {
   const initNotesList = JSON.parse(localStorage.getItem("notes"));
@@ -21,16 +22,13 @@ const NoteApp = () => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
-  const removeNote = title => {
-    dispatch({ type: "REMOVE_NOTES", title });
-  };
-
   return (
-    <div>
+    <NotestContext.Provider value={{ notes, dispatch }}>
       <h1>Notes App</h1>
-      <AddNote dispatch={dispatch} />
-      <NodeList notes={notes} removeNote={removeNote} />
-    </div>
+      <AddNote />
+      {/* <NodeList notes={notes} removeNote={removeNote} /> */}
+      <NodeList />
+    </NotestContext.Provider>
   );
 };
 

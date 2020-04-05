@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import NotesContext from "./context/reacts-context";
 
-const Note = ({ note, removeNote }) => {
+const Note = ({ note }) => {
+  const { dispatch } = useContext(NotesContext);
   useEffect(() => {
     console.log("Note item run onces");
 
@@ -14,7 +16,7 @@ const Note = ({ note, removeNote }) => {
       <h4 style={{ marginLeft: "0.5rem" }}>{note.body}</h4>
       <button
         style={{ margin: "0.5rem", backgroundColor: "grey" }}
-        onClick={() => removeNote(note.title)}
+        onClick={() => dispatch({ type: "REMOVE_NOTES", title: note.title })}
       >
         x
       </button>
